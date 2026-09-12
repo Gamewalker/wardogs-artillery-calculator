@@ -7,7 +7,6 @@ const targetXInput = document.getElementById('targetX');
 const targetYInput = document.getElementById('targetY');
 
 const distanceKmEl = document.getElementById('distanceKm');
-const azimuthEl = document.getElementById('azimuth');
 const rangeMessageEl = document.getElementById('rangeMessage');
 
 const pasteGunBtn = document.getElementById('pasteGunBtn');
@@ -28,23 +27,22 @@ const I18N = {
     eyebrow: 'Wardogs artillery calculator',
     appTitle: 'Artillery Distance Calculator',
     metaDescription:
-      'Static distance and azimuth calculator for WARDOGS coordinates.',
+      'Static distance calculator for WARDOGS coordinates.',
     heroDescription:
-      'Copy two game positions and get distance + azimuth instantly. The game itself uses distance for fire calculation.',
+      'Copy two game positions and get distance instantly. The game itself uses distance for fire calculation.',
     sectionPoints: '1) Points',
     sectionResult: '2) Result',
     sectionNotes: '3) Notes',
     copyHint:
-      'In-game copy-paste format: <code>x98.43, y110.38</code> or <code>x: 98.43, y: 110.38</code>',
+      'In-game copy-paste format: <code>x98.43, y110.38</code>&nbsp;or&nbsp;<code>x: 98.43, y: 110.38</code>',
     ownPositionLabel: 'Own position',
     enemyPositionLabel: 'Enemy position',
     pasteOwnBtn: 'Paste own position',
     pasteEnemyBtn: 'Paste enemy position',
     resetBtn: 'Clear all fields',
     resultDistance: 'Distance',
-    resultAzimuth: 'Azimuth',
     statusReady: 'Enter values and result is calculated automatically.',
-    statusResult: 'Distance {distance} m · Azimuth {azimuth}°.',
+    statusResult: 'Distance {distance} m.',
     noteMethod:
       'The game only needs distance for fire solution. Elevation tables are intentionally not used.',
     noteUseInGame: 'Always verify with at least one correction shot in-game.',
@@ -66,7 +64,6 @@ const I18N = {
     },
     units: {
       meters: 'm',
-      azimuth: '°',
     },
     aria: {
       ownX: 'Own position x',
@@ -86,23 +83,22 @@ const I18N = {
     eyebrow: 'Wardogs Artillerie-Rechner',
     appTitle: 'Wardogs Distanz-Rechner',
     metaDescription:
-      'Statische Berechnung von Distanz und Azimut für WARDOGS Koordinaten.',
+      'Statische Distanzberechnung für WARDOGS Koordinaten.',
     heroDescription:
-      'Kopiere zwei Spielpositionen und erhalte sofort Distanz + Azimut. Das Spiel nutzt für die Berechnung nur die Distanz.',
+      'Kopiere zwei Spielpositionen und erhalte sofort die Distanz. Das Spiel nutzt für die Berechnung nur die Distanz.',
     sectionPoints: '1) Punkte',
     sectionResult: '2) Ergebnis',
     sectionNotes: '3) Hinweise',
     copyHint:
-      'Copy-Paste-Format aus dem Spiel: <code>x98.43, y110.38</code> oder <code>x: 98.43 y: 110.38</code>',
+      'Copy-Paste-Format aus dem Spiel: <code>x98.43, y110.38</code>&nbsp;oder&nbsp;<code>x: 98.43, y: 110.38</code>',
     ownPositionLabel: 'eigene Position',
     enemyPositionLabel: 'Gegnerposition',
     pasteOwnBtn: 'eigene Position einfügen',
     pasteEnemyBtn: 'Gegnerposition einfügen',
     resetBtn: 'Alle Felder leeren',
     resultDistance: 'Entfernung',
-    resultAzimuth: 'Azimut',
     statusReady: 'Setze Werte ein, dann wird automatisch gerechnet.',
-    statusResult: 'Entfernung {distance} m · Azimut {azimuth}°.',
+    statusResult: 'Entfernung {distance} m.',
     noteMethod:
       'Das Spiel braucht für den Schuss nur die Distanz. Tabellen/Elevation werden hier bewusst nicht verwendet.',
     noteUseInGame: 'Teste die Empfehlung im Spiel mindestens mit einem Korrektur-Schuss.',
@@ -125,7 +121,6 @@ const I18N = {
     },
     units: {
       meters: 'm',
-      azimuth: '°',
     },
     aria: {
       ownX: 'eigene Position x',
@@ -138,6 +133,176 @@ const I18N = {
       pasteOwnBtn: 'eigene Position einfügen',
       pasteEnemyBtn: 'Gegnerposition einfügen',
       clearBtn: 'Alle Felder leeren',
+    },
+  },
+  fr: {
+    languageLabel: 'Langue',
+    eyebrow: 'Calculateur d’artillerie Wardogs',
+    appTitle: 'Calculateur de distance d’artillerie',
+    metaDescription:
+      'Calcul de distance statique pour les coordonnées WARDOGS.',
+    heroDescription:
+      'Copiez deux positions de jeu et obtenez la distance immédiatement. Le jeu utilise seulement la distance pour le calcul.',
+    sectionPoints: '1) Points',
+    sectionResult: '2) Résultat',
+    sectionNotes: '3) Notes',
+    copyHint:
+      'Format de copie du jeu : <code>x98.43, y110.38</code>&nbsp;ou&nbsp;<code>x: 98.43, y: 110.38</code>',
+    ownPositionLabel: 'position propre',
+    enemyPositionLabel: 'position ennemi',
+    pasteOwnBtn: 'coller ma position',
+    pasteEnemyBtn: 'coller position ennemie',
+    resetBtn: 'Vider tous les champs',
+    resultDistance: 'Distance',
+    statusReady:
+      'Saisissez les valeurs et le résultat est calculé automatiquement.',
+    statusResult: 'Distance {distance} m.',
+    noteMethod:
+      'Le jeu n’a besoin que de la distance pour le calcul du tir. Les tables de hauteur ne sont pas utilisées.',
+    noteUseInGame: 'Vérifiez toujours avec au moins un tir de correction dans le jeu.',
+    noteRepoLink: 'Dépôt GitHub',
+    noteVideoLink: 'Vidéo de référence',
+    inputPlaceholderOwnX: '98.43',
+    inputPlaceholderOwnY: '110.38',
+    inputPlaceholderTargetX: '108.90',
+    inputPlaceholderTargetY: '112.50',
+    statusMessages: {
+      missingInputs: 'Veuillez entrer des valeurs valides pour votre position et la position ennemie.',
+      clipboardInvalid:
+        'Le presse-papiers ne contient pas le format du jeu. Format attendu : x98.53, y109.03',
+      clipboardApplied: 'Coordonnées collées depuis le presse-papiers.',
+      clipboardFromPaste: 'Coordonnées copiées dans les champs.',
+      clipboardError:
+        'Le presse-papiers n’a pas pu être lu. Veuillez coller manuellement.',
+      cleared:
+        'Champs vides. Collez ou saisissez de nouvelles coordonnées.',
+    },
+    units: {
+      meters: 'm',
+    },
+    aria: {
+      ownX: 'position propre x',
+      ownY: 'position propre y',
+      enemyX: 'position ennemie x',
+      enemyY: 'position ennemie y',
+      ownPositionLabel: 'position propre',
+      enemyPositionLabel: 'position ennemie',
+      languageSelect: 'Langue',
+      pasteOwnBtn: 'coller ma position',
+      pasteEnemyBtn: 'coller position ennemie',
+      clearBtn: 'Vider tous les champs',
+    },
+  },
+  es: {
+    languageLabel: 'Idioma',
+    eyebrow: 'Calculadora de artillería Wardogs',
+    appTitle: 'Calculadora de distancia de artillería',
+    metaDescription:
+      'Calculadora de distancia estática para coordenadas de WARDOGS.',
+    heroDescription:
+      'Copia dos posiciones del juego y obtén la distancia al instante. El juego usa solo la distancia para calcular el disparo.',
+    sectionPoints: '1) Puntos',
+    sectionResult: '2) Resultado',
+    sectionNotes: '3) Notas',
+    copyHint:
+      'Formato de pegado del juego: <code>x98.43, y110.38</code>&nbsp;o&nbsp;<code>x: 98.43, y: 110.38</code>',
+    ownPositionLabel: 'posición propia',
+    enemyPositionLabel: 'posición enemiga',
+    pasteOwnBtn: 'pegar posición propia',
+    pasteEnemyBtn: 'pegar posición enemiga',
+    resetBtn: 'Borrar todos los campos',
+    resultDistance: 'Distancia',
+    statusReady:
+      'Introduce valores y el resultado se calcula automáticamente.',
+    statusResult: 'Distancia {distance} m.',
+    noteMethod:
+      'El juego solo usa la distancia para la solución de tiro. Las tablas de elevación no se usan aquí.',
+    noteUseInGame: 'Comprueba siempre con al menos un tiro de corrección en el juego.',
+    noteRepoLink: 'Repositorio GitHub',
+    noteVideoLink: 'Video de referencia',
+    inputPlaceholderOwnX: '98.43',
+    inputPlaceholderOwnY: '110.38',
+    inputPlaceholderTargetX: '108.90',
+    inputPlaceholderTargetY: '112.50',
+    statusMessages: {
+      missingInputs: 'Introduce valores válidos para tu posición y la enemiga.',
+      clipboardInvalid:
+        'El portapapeles no coincide con el formato del juego. Formato esperado: x98.53, y109.03',
+      clipboardApplied: 'Coordenadas pegadas desde el portapapeles.',
+      clipboardFromPaste: 'Coordenadas copiadas a los campos.',
+      clipboardError:
+        'No se pudo leer el portapapeles. Introduce manualmente.',
+      cleared: 'Campos vaciados. Pega o escribe nuevas coordenadas.',
+    },
+    units: {
+      meters: 'm',
+    },
+    aria: {
+      ownX: 'posición propia x',
+      ownY: 'posición propia y',
+      enemyX: 'posición enemiga x',
+      enemyY: 'posición enemiga y',
+      ownPositionLabel: 'posición propia',
+      enemyPositionLabel: 'posición enemiga',
+      languageSelect: 'Idioma',
+      pasteOwnBtn: 'pegar posición propia',
+      pasteEnemyBtn: 'pegar posición enemiga',
+      clearBtn: 'Borrar todos los campos',
+    },
+  },
+  tr: {
+    languageLabel: 'Dil',
+    eyebrow: 'Wardogs topçu hesaplayıcı',
+    appTitle: 'Topçu Mesafe Hesaplayıcı',
+    metaDescription: 'WARDOGS koordinatları için mesafe hesaplayıcı.',
+    heroDescription:
+      'Oyundan iki konumu kopyalayıp anında mesafeyi hesapla. Oyun, atış hesabında yalnızca mesafeyi kullanır.',
+    sectionPoints: '1) Noktalar',
+    sectionResult: '2) Sonuç',
+    sectionNotes: '3) Notlar',
+    copyHint:
+      'Oyundaki kopyala-yapıştır formatı: <code>x98.43, y110.38</code>&nbsp;veya&nbsp;<code>x: 98.43, y: 110.38</code>',
+    ownPositionLabel: 'kendi konumun',
+    enemyPositionLabel: 'düşman konumu',
+    pasteOwnBtn: 'kendi konumunu yapıştır',
+    pasteEnemyBtn: 'düşman konumunu yapıştır',
+    resetBtn: 'Tüm alanları temizle',
+    resultDistance: 'Mesafe',
+    statusReady: 'Değerleri gir, sonuç otomatik hesaplanır.',
+    statusResult: 'Mesafe {distance} m.',
+    noteMethod:
+      'Oyun atış çözümü için yalnızca mesafeyi kullanır. Yükseklik tabloları burada kullanılmaz.',
+    noteUseInGame:
+      'Oyunda en az bir düzeltme atışıyla sonucu doğrula.',
+    noteRepoLink: 'GitHub deposu',
+    noteVideoLink: 'Referans video',
+    inputPlaceholderOwnX: '98.43',
+    inputPlaceholderOwnY: '110.38',
+    inputPlaceholderTargetX: '108.90',
+    inputPlaceholderTargetY: '112.50',
+    statusMessages: {
+      missingInputs: 'Lütfen kendi ve düşman konumu için geçerli değerler girin.',
+      clipboardInvalid:
+        'Pano formatı oyunun formatıyla eşleşmiyor. Beklenen: x98.53, y109.03',
+      clipboardApplied: 'Koordinatlar panodan alındı.',
+      clipboardFromPaste: 'Koordinatlar ilgili alana yapıştırıldı.',
+      clipboardError: 'Pano okunamadı. Lütfen manuel yapıştırın.',
+      cleared: 'Alanlar temizlendi. Yeni koordinatlar girin veya yapıştırın.',
+    },
+    units: {
+      meters: 'm',
+    },
+    aria: {
+      ownX: 'kendi konum x',
+      ownY: 'kendi konum y',
+      enemyX: 'düşman x',
+      enemyY: 'düşman y',
+      ownPositionLabel: 'kendi konumun',
+      enemyPositionLabel: 'düşman konumu',
+      languageSelect: 'Dil',
+      pasteOwnBtn: 'kendi konumunu yapıştır',
+      pasteEnemyBtn: 'düşman konumunu yapıştır',
+      clearBtn: 'Tüm alanları temizle',
     },
   },
 };
@@ -153,11 +318,6 @@ function t(key, vars = {}) {
   return value.replace(/\{(\w+)\}/g, (_, token) =>
     Object.prototype.hasOwnProperty.call(vars, token) ? String(vars[token]) : ''
   );
-}
-
-function normNum(value) {
-  const n = Number(value);
-  return Number.isFinite(n) ? n : null;
 }
 
 function parseToCentimeterUnits(value) {
@@ -336,39 +496,28 @@ function applyTranslations() {
 }
 
 function calculate() {
-  const gunX = normNum(gunXInput.value);
-  const gunY = normNum(gunYInput.value);
-  const targetX = normNum(targetXInput.value);
-  const targetY = normNum(targetYInput.value);
   const gunXcm = parseToCentimeterUnits(gunXInput.value);
   const gunYcm = parseToCentimeterUnits(gunYInput.value);
   const targetXcm = parseToCentimeterUnits(targetXInput.value);
   const targetYcm = parseToCentimeterUnits(targetYInput.value);
 
   if (
-    [gunX, gunY, targetX, targetY, gunXcm, gunYcm, targetXcm, targetYcm].some(
-      (value) => value === null
-    )
+    [gunXcm, gunYcm, targetXcm, targetYcm].some((value) => value === null)
   ) {
     setResult(t('statusMessages.missingInputs'), false);
     distanceKmEl.textContent = '—';
-    azimuthEl.textContent = '—';
     return;
   }
 
   const dx = targetXcm - gunXcm;
   const dy = targetYcm - gunYcm;
   const distanceM = Math.hypot(dx, dy);
-  const distanceMExact = Math.round(distanceM * 100) / 100;
-  const azimuth = (Math.atan2(dx, dy) * 180) / Math.PI;
-  const normAzimuth = azimuth < 0 ? azimuth + 360 : azimuth;
+  const distanceMExact = Math.round(distanceM / 100);
 
-  distanceKmEl.textContent = `${distanceMExact.toFixed(2)} ${t('units.meters')}`;
-  azimuthEl.textContent = `${normAzimuth.toFixed(1)}${t('units.azimuth')}`;
+  distanceKmEl.textContent = `${distanceMExact} ${t('units.meters')}`;
   setResult(
     t('statusResult', {
-      distance: distanceMExact.toFixed(2),
-      azimuth: normAzimuth.toFixed(1),
+      distance: distanceMExact.toString(),
     })
   );
 }
@@ -405,7 +554,6 @@ function wireEvents() {
     targetXInput.value = '';
     targetYInput.value = '';
     distanceKmEl.textContent = '—';
-    azimuthEl.textContent = '—';
     setResult(t('statusMessages.cleared'));
   });
 

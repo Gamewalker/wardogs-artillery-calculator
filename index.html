@@ -10,7 +10,7 @@
     <meta
       name="description"
       data-i18n-content="metaDescription"
-      content="Static distance and azimuth calculator for WARDOGS coordinates."
+      content="Static distance calculator for WARDOGS coordinates."
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
@@ -24,13 +24,16 @@
             <select id="languageSelect" aria-label="Language / Sprache">
               <option value="en">English</option>
               <option value="de">Deutsch</option>
+              <option value="fr">Français</option>
+              <option value="es">Español</option>
+              <option value="tr">Türkçe</option>
             </select>
           </label>
         </div>
         <h1 data-i18n="appTitle">Artillery Distance Calculator</h1>
         <p id="heroDescription" data-i18n="heroDescription">
-          Copy two game positions and get distance + azimuth instantly. The game
-          itself uses distance for fire calculation.
+          Copy two game positions and get distance instantly. The game itself uses
+          distance for fire calculation.
         </p>
       </header>
 
@@ -38,8 +41,7 @@
         <section class="card">
           <h2 data-i18n="sectionPoints">1) Points</h2>
           <p class="note copy-hint" data-i18n-html="copyHint">
-            In-game copy-paste format: <code>x98.43, y110.38</code> or
-            <code>x: 98.43, y: 110.38</code>
+            In-game copy-paste format: <code>x98.43, y110.38</code>&nbsp;or&nbsp;<code>x: 98.43, y: 110.38</code>
           </p>
           <div class="grid card-grid-top">
             <div class="point-row">
@@ -114,7 +116,6 @@
           <h2 data-i18n="sectionResult">2) Result</h2>
           <div class="result-grid">
             <div><span data-i18n="resultDistance">Distance</span><strong id="distanceKm">—</strong></div>
-            <div><span data-i18n="resultAzimuth">Azimuth</span><strong id="azimuth">—</strong></div>
           </div>
           <p id="rangeMessage" class="note" data-i18n="statusReady">Enter values and result is calculated automatically.</p>
         </section>
