@@ -11,7 +11,8 @@ den Community-Ballistiktabellen (L81-Mörser + SPH-2).
 - Azimut-Berechnung im Spiel-Format (`atan2(dx, dy)`)
 - Interpolierte Schusswinkel-Berechnung aus der Tabelle
 - Unterstützung von Low-/High-Arc für SPH-2
-- Schnelles Einfügen per **Zwischenablage**: Ein Klick füllt automatisch Kanonen- und Zielkoordinaten aus kopiertem Spieltext.
+- Schnellster Workflow: 2 Punkte einfügen (Koordinate 1 + Koordinate 2) und sofort Ergebnis.
+- Schnelles Einfügen per **Zwischenablage**: Ein Klick füllt automatisch beide Punkte aus kopiertem Spieltext.
 
 ## Voraussetzungen
 

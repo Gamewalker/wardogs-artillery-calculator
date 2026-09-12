@@ -27,21 +27,14 @@
 
       <main class="container">
         <section class="card">
-          <h2>1) Schussposition</h2>
+          <h2>1) Punkte</h2>
           <div class="grid">
             <label>
               Waffe
               <select id="weaponSelect" aria-label="Waffe wählen"></select>
             </label>
             <label>
-              Koordinatenskalierung
-              <select id="scaleSelect" aria-label="Koordinatenskalierung">
-                <option value="100">100 m pro Einheit (Wardogs Standard)</option>
-                <option value="1">1 m pro Einheit</option>
-              </select>
-            </label>
-            <label>
-              Kanone X
+              Punkt 1 X
               <input
                 id="gunX"
                 type="number"
@@ -51,7 +44,7 @@
               />
             </label>
             <label>
-              Kanone Y
+              Punkt 1 Y
               <input
                 id="gunY"
                 type="number"
@@ -61,7 +54,7 @@
               />
             </label>
             <label>
-              Ziel X
+              Punkt 2 X
               <input
                 id="targetX"
                 type="number"
@@ -71,7 +64,7 @@
               />
             </label>
             <label>
-              Ziel Y
+              Punkt 2 Y
               <input
                 id="targetY"
                 type="number"
@@ -83,9 +76,6 @@
           </div>
           <div class="actions">
             <button id="calculateBtn" type="button">Berechnung aktualisieren</button>
-            <button id="swapBtn" type="button" class="ghost">
-              Kanone ↔ Ziel tauschen
-            </button>
             <button id="pasteBtn" type="button">Koordinaten einfügen</button>
           </div>
         </section>
@@ -93,11 +83,8 @@
         <section class="card">
           <h2>2) Ergebnis</h2>
           <div class="result-grid">
-            <div><span>Entfernung</span><strong id="distanceM">—</strong></div>
             <div><span>Entfernung</span><strong id="distanceKm">—</strong></div>
             <div><span>Azimut</span><strong id="azimuth">—</strong></div>
-            <div><span>dx</span><strong id="deltaX">—</strong></div>
-            <div><span>dy</span><strong id="deltaY">—</strong></div>
             <div><span>Elevation</span><strong id="elevation">—</strong></div>
           </div>
           <p id="rangeMessage" class="note">Setze Werte ein, dann wird gerechnet.</p>

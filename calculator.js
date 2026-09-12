@@ -1,19 +1,16 @@
 const weaponSelect = document.getElementById('weaponSelect');
-const scaleSelect = document.getElementById('scaleSelect');
 const gunXInput = document.getElementById('gunX');
 const gunYInput = document.getElementById('gunY');
 const targetXInput = document.getElementById('targetX');
 const targetYInput = document.getElementById('targetY');
-const distanceMEl = document.getElementById('distanceM');
 const distanceKmEl = document.getElementById('distanceKm');
 const azimuthEl = document.getElementById('azimuth');
-const deltaXEl = document.getElementById('deltaX');
-const deltaYEl = document.getElementById('deltaY');
 const elevationEl = document.getElementById('elevation');
 const rangeMessageEl = document.getElementById('rangeMessage');
 const calculateBtn = document.getElementById('calculateBtn');
-const swapBtn = document.getElementById('swapBtn');
 const pasteBtn = document.getElementById('pasteBtn');
+
+const COORD_SCALE = 100;
 
 let weapons = [];
 
@@ -333,7 +330,6 @@ function calculate() {
   const gunY = normNum(gunYInput.value);
   const targetX = normNum(targetXInput.value);
   const targetY = normNum(targetYInput.value);
-  const scale = Number(scaleSelect.value);
   const weaponId = weaponSelect.value;
   const weapon = weapons.find((item) => item.id === weaponId);
 
@@ -347,18 +343,15 @@ function calculate() {
     return;
   }
 
-  const dx = (targetX - gunX) * scale;
-  const dy = (targetY - gunY) * scale;
+  const dx = (targetX - gunX) * COORD_SCALE;
+  const dy = (targetY - gunY) * COORD_SCALE;
   const distanceM = Math.hypot(dx, dy);
   const distanceKm = distanceM / 1000;
   const azimuth = (Math.atan2(dx, dy) * 180) / Math.PI;
   const normAzimuth = azimuth < 0 ? azimuth + 360 : azimuth;
 
-  distanceMEl.textContent = `${Math.round(distanceM)} m`;
   distanceKmEl.textContent = `${distanceKm.toFixed(2)} km`;
   azimuthEl.textContent = `${normAzimuth.toFixed(1)}°`;
-  deltaXEl.textContent = `${Math.round(dx)} m`;
-  deltaYEl.textContent = `${Math.round(dy)} m`;
 
   const solutions = getWeaponElevationSolutions(weapon, distanceM);
 
@@ -397,22 +390,11 @@ function calculate() {
   );
 }
 
-function swapPoints() {
-  const gx = gunXInput.value;
-  const gy = gunYInput.value;
-  gunXInput.value = targetXInput.value;
-  gunYInput.value = targetYInput.value;
-  targetXInput.value = gx;
-  targetYInput.value = gy;
-  calculate();
-}
-
 function wireEvents() {
   calculateBtn.addEventListener('click', calculate);
-  swapBtn.addEventListener('click', swapPoints);
   pasteBtn.addEventListener('click', pasteCoordinates);
 
-  [gunXInput, gunYInput, targetXInput, targetYInput, weaponSelect, scaleSelect].forEach((el) => {
+  [gunXInput, gunYInput, targetXInput, targetYInput, weaponSelect].forEach((el) => {
     el.addEventListener('change', calculate);
     el.addEventListener('keyup', (event) => {
       if (event.key === 'Enter') calculate();
