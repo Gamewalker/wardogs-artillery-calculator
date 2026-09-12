@@ -13,6 +13,7 @@ const elevationEl = document.getElementById('elevation');
 const rangeMessageEl = document.getElementById('rangeMessage');
 const calculateBtn = document.getElementById('calculateBtn');
 const swapBtn = document.getElementById('swapBtn');
+const pasteBtn = document.getElementById('pasteBtn');
 
 let weapons = [];
 
@@ -206,6 +207,107 @@ function formatWeaponLabel(weapon) {
   return `${weapon.name} (${weapon.id.toUpperCase()})`;
 }
 
+function parseCoordinatePairsFromText(text) {
+  const pairs = [];
+  const normalized = String(text ?? '');
+
+  const labelRegex = /\b([xy](?:\d+)?)\s*[:=]?\s*(-?\d+(?:[.,]\d+)?)/gi;
+  const directRegex = /-?\d+(?:[.,]\d+)?/g;
+
+  const matches = [...normalized.matchAll(labelRegex)];
+
+  if (matches.length >= 4) {
+    let temp = { x: null, y: null };
+
+    for (const match of matches) {
+      const axis = match[1][0].toLowerCase();
+      const raw = match[2].replace(',', '.');
+      const value = Number(raw);
+
+      if (!Number.isFinite(value)) {
+        continue;
+      }
+
+      if (axis === 'x') {
+        if (temp.x !== null && temp.y !== null) {
+          pairs.push({ ...temp });
+          temp = { x: null, y: null };
+        }
+
+        temp.x = value;
+        continue;
+      }
+
+      temp.y = value;
+
+      if (temp.x !== null) {
+        pairs.push({ ...temp });
+        temp = { x: null, y: null };
+      }
+    }
+
+    if (temp.x !== null && temp.y !== null) {
+      pairs.push(temp);
+    }
+  }
+
+  if (!pairs.length) {
+    const numeric = normalized
+      .match(directRegex)
+      ?.map((value) => Number(value.replace(',', '.')))
+      .filter(Number.isFinite) ?? [];
+
+    if (numeric.length >= 4) {
+      for (let index = 0; index < numeric.length - 1; index += 2) {
+        if (pairs.length >= 2) {
+          break;
+        }
+
+        pairs.push({ x: numeric[index], y: numeric[index + 1] });
+      }
+    }
+  }
+
+  if (!pairs.length) {
+    return null;
+  }
+
+  if (pairs.length < 2) {
+    return null;
+  }
+
+  return {
+    gun: pairs[0],
+    target: pairs[1] ?? pairs[0]
+  };
+}
+
+function setCoordinatesFromClipboardText(text) {
+  const parsed = parseCoordinatePairsFromText(text);
+
+  if (!parsed || !parsed.gun || !parsed.target) {
+    setResult('Zwischenablage enthält nicht 4 Zahlen / 2 Punkte (x/y bzw. X/Y).');
+    return;
+  }
+
+  gunXInput.value = String(parsed.gun.x);
+  gunYInput.value = String(parsed.gun.y);
+  targetXInput.value = String(parsed.target.x);
+  targetYInput.value = String(parsed.target.y);
+  calculate();
+
+  setResult('Koordinaten aus Zwischenablage übernommen.');
+}
+
+async function pasteCoordinates() {
+  try {
+    const clipboardText = await navigator.clipboard.readText();
+    setCoordinatesFromClipboardText(clipboardText);
+  } catch (error) {
+    setResult('Zwischenablage konnte nicht gelesen werden. Bitte Werte manuell einfügen.');
+  }
+}
+
 function populateWeapons() {
   weaponSelect.innerHTML = '';
   weapons.forEach((weapon) => {
@@ -308,11 +410,29 @@ function swapPoints() {
 function wireEvents() {
   calculateBtn.addEventListener('click', calculate);
   swapBtn.addEventListener('click', swapPoints);
+  pasteBtn.addEventListener('click', pasteCoordinates);
 
   [gunXInput, gunYInput, targetXInput, targetYInput, weaponSelect, scaleSelect].forEach((el) => {
     el.addEventListener('change', calculate);
     el.addEventListener('keyup', (event) => {
       if (event.key === 'Enter') calculate();
+    });
+  });
+
+  [gunXInput, gunYInput, targetXInput, targetYInput].forEach((input) => {
+    input.addEventListener('paste', (event) => {
+      const pastedText = event.clipboardData?.getData('text');
+      if (!pastedText) {
+        return;
+      }
+
+      const parsed = parseCoordinatePairsFromText(pastedText);
+      if (!parsed || !parsed.gun || !parsed.target) {
+        return;
+      }
+
+      event.preventDefault();
+      setCoordinatesFromClipboardText(pastedText);
     });
   });
 }
