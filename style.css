@@ -86,12 +86,18 @@ body {
 .point-row {
   display: grid;
   gap: 0.6rem;
-  grid-template-columns: 1.35fr minmax(95px, 1fr) minmax(95px, 1fr) auto;
+  grid-template-columns: 1fr;
   align-items: end;
   padding: 0.65rem;
   border: 1px dashed rgba(163, 184, 255, 0.38);
   border-radius: 12px;
   min-height: 94px;
+}
+
+.point-coords {
+  display: grid;
+  grid-template-columns: minmax(95px, 1fr) minmax(95px, 1fr);
+  gap: 0.6rem;
 }
 
 .point-label {
@@ -117,7 +123,10 @@ body {
 
 .paste-btn {
   min-height: 44px;
-  margin-left: 0.5rem;
+  width: fit-content;
+  min-width: 180px;
+  justify-self: start;
+  margin: 0;
 }
 
 label {
@@ -153,15 +162,11 @@ button:hover {
 
 .actions {
   margin-top: 0.95rem;
-  display: flex;
-  gap: 0.7rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  display: block;
 }
 
 .actions button {
-  width: auto;
-  min-width: 180px;
+  width: 100%;
 }
 
 .copy-hint {
@@ -191,8 +196,12 @@ button.ghost {
 
   .point-row {
     gap: 0.55rem;
-    grid-template-columns: 1fr 1fr;
     align-items: stretch;
+  }
+
+  .point-coords {
+    grid-template-columns: minmax(95px, 1fr) minmax(95px, 1fr);
+    gap: 0.55rem;
   }
 
   .coord-field {
@@ -201,11 +210,6 @@ button.ghost {
 
   .point-label {
     grid-column: 1 / -1;
-  }
-
-  .point-row .paste-btn {
-    grid-column: 1 / -1;
-    margin-left: 0;
   }
 
   .point-row label {
@@ -222,10 +226,6 @@ button.ghost {
     min-height: 44px;
   }
 
-  .actions {
-    justify-content: stretch;
-  }
-
   .actions button {
     width: 100%;
     min-width: 0;
@@ -238,11 +238,17 @@ button.ghost {
 
 @media (max-width: 460px) {
   .point-row {
+    gap: 0.55rem;
+  }
+
+  .point-coords {
     grid-template-columns: 1fr;
+    gap: 0.45rem;
   }
 
   .point-row .paste-btn {
-    margin-top: 0.2rem;
+    width: 100%;
+    min-width: 0;
   }
 }
 

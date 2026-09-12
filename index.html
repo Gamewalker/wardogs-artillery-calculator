@@ -50,29 +50,31 @@
           <div class="grid card-grid-top">
             <div class="point-row">
               <div class="point-label" data-i18n="ownPositionLabel">own position</div>
-              <div class="coord-field">
-                <span class="coord-axis">x</span>
-                <input
-                  id="gunX"
-                  type="number"
-                  inputmode="decimal"
-                  placeholder="98.43"
-                  step="0.01"
-                  data-i18n-placeholder="inputPlaceholderOwnX"
-                  aria-label="Own x"
-                />
-              </div>
-              <div class="coord-field">
-                <span class="coord-axis">y</span>
-                <input
-                  id="gunY"
-                  type="number"
-                  inputmode="decimal"
-                  placeholder="110.38"
-                  step="0.01"
-                  data-i18n-placeholder="inputPlaceholderOwnY"
-                  aria-label="Own y"
-                />
+              <div class="point-coords">
+                <div class="coord-field">
+                  <span class="coord-axis">x</span>
+                  <input
+                    id="gunX"
+                    type="number"
+                    inputmode="decimal"
+                    placeholder="98.43"
+                    step="0.01"
+                    data-i18n-placeholder="inputPlaceholderOwnX"
+                    aria-label="Own x"
+                  />
+                </div>
+                <div class="coord-field">
+                  <span class="coord-axis">y</span>
+                  <input
+                    id="gunY"
+                    type="number"
+                    inputmode="decimal"
+                    placeholder="110.38"
+                    step="0.01"
+                    data-i18n-placeholder="inputPlaceholderOwnY"
+                    aria-label="Own y"
+                  />
+                </div>
               </div>
               <button id="pasteGunBtn" class="paste-btn" type="button">
                 <span data-i18n="pasteOwnBtn">Paste own position</span>
@@ -80,29 +82,31 @@
             </div>
             <div class="point-row">
               <div class="point-label" data-i18n="enemyPositionLabel">Enemy position</div>
-              <div class="coord-field">
-                <span class="coord-axis">x</span>
-                <input
-                  id="targetX"
-                  type="number"
-                  inputmode="decimal"
-                  placeholder="108.90"
-                  step="0.01"
-                  data-i18n-placeholder="inputPlaceholderTargetX"
-                  aria-label="Enemy x"
-                />
-              </div>
-              <div class="coord-field">
-                <span class="coord-axis">y</span>
-                <input
-                  id="targetY"
-                  type="number"
-                  inputmode="decimal"
-                  placeholder="112.50"
-                  step="0.01"
-                  data-i18n-placeholder="inputPlaceholderTargetY"
-                  aria-label="Enemy y"
-                />
+              <div class="point-coords">
+                <div class="coord-field">
+                  <span class="coord-axis">x</span>
+                  <input
+                    id="targetX"
+                    type="number"
+                    inputmode="decimal"
+                    placeholder="108.90"
+                    step="0.01"
+                    data-i18n-placeholder="inputPlaceholderTargetX"
+                    aria-label="Enemy x"
+                  />
+                </div>
+                <div class="coord-field">
+                  <span class="coord-axis">y</span>
+                  <input
+                    id="targetY"
+                    type="number"
+                    inputmode="decimal"
+                    placeholder="112.50"
+                    step="0.01"
+                    data-i18n-placeholder="inputPlaceholderTargetY"
+                    aria-label="Enemy y"
+                  />
+                </div>
               </div>
               <button id="pasteTargetBtn" class="paste-btn" type="button">
                 <span data-i18n="pasteEnemyBtn">Paste enemy position</span>
