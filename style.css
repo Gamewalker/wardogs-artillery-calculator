@@ -277,6 +277,10 @@ button.ghost {
   color: #b6c5ff;
 }
 
+.note.copy-hint {
+  margin: 0.9rem 0 1.2rem;
+}
+
 ul {
   margin: 0.6rem 0 0;
   padding-left: 1.15rem;
