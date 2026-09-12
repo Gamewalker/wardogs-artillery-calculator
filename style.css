@@ -267,7 +267,9 @@ button.ghost {
 }
 
 .result-grid strong {
+  color: #2eff58;
   font-size: 1.1rem;
+  text-shadow: 0 0 12px rgba(46, 255, 88, 0.45);
 }
 
 .note {

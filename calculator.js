@@ -18,7 +18,6 @@ const heroDescriptionEl = document.getElementById('heroDescription');
 const repoLink = document.getElementById('repoLink');
 const videoLink = document.getElementById('videoLink');
 
-const COORD_SCALE = 100;
 const DEFAULT_LANGUAGE = 'en';
 
 let currentLanguage = DEFAULT_LANGUAGE;
@@ -45,7 +44,7 @@ const I18N = {
     resultDistance: 'Distance',
     resultAzimuth: 'Azimuth',
     statusReady: 'Enter values and result is calculated automatically.',
-    statusResult: 'Distance {distance} km · Azimuth {azimuth}°.',
+    statusResult: 'Distance {distance} m · Azimuth {azimuth}°.',
     noteMethod:
       'The game only needs distance for fire solution. Elevation tables are intentionally not used.',
     noteUseInGame: 'Always verify with at least one correction shot in-game.',
@@ -66,7 +65,7 @@ const I18N = {
       cleared: 'Fields cleared. Paste or enter new coordinates.',
     },
     units: {
-      km: 'km',
+      meters: 'm',
       azimuth: '°',
     },
     aria: {
@@ -103,7 +102,7 @@ const I18N = {
     resultDistance: 'Entfernung',
     resultAzimuth: 'Azimut',
     statusReady: 'Setze Werte ein, dann wird automatisch gerechnet.',
-    statusResult: 'Distanz {distance} km · Azimut {azimuth}°.',
+    statusResult: 'Entfernung {distance} m · Azimut {azimuth}°.',
     noteMethod:
       'Das Spiel braucht für den Schuss nur die Distanz. Tabellen/Elevation werden hier bewusst nicht verwendet.',
     noteUseInGame: 'Teste die Empfehlung im Spiel mindestens mit einem Korrektur-Schuss.',
@@ -125,7 +124,7 @@ const I18N = {
         'Felder geleert. Neue Koordinaten einfügen oder manuell eingeben.',
     },
     units: {
-      km: 'km',
+      meters: 'm',
       azimuth: '°',
     },
     aria: {
@@ -159,6 +158,19 @@ function t(key, vars = {}) {
 function normNum(value) {
   const n = Number(value);
   return Number.isFinite(n) ? n : null;
+}
+
+function parseToCentimeterUnits(value) {
+  if (value === null || value === undefined) {
+    return null;
+  }
+
+  const n = Number(value);
+  if (!Number.isFinite(n)) {
+    return null;
+  }
+
+  return Math.round(n * 100);
 }
 
 function setResult(message, isError = false) {
@@ -328,26 +340,34 @@ function calculate() {
   const gunY = normNum(gunYInput.value);
   const targetX = normNum(targetXInput.value);
   const targetY = normNum(targetYInput.value);
+  const gunXcm = parseToCentimeterUnits(gunXInput.value);
+  const gunYcm = parseToCentimeterUnits(gunYInput.value);
+  const targetXcm = parseToCentimeterUnits(targetXInput.value);
+  const targetYcm = parseToCentimeterUnits(targetYInput.value);
 
-  if ([gunX, gunY, targetX, targetY].some((value) => value === null)) {
+  if (
+    [gunX, gunY, targetX, targetY, gunXcm, gunYcm, targetXcm, targetYcm].some(
+      (value) => value === null
+    )
+  ) {
     setResult(t('statusMessages.missingInputs'), false);
     distanceKmEl.textContent = '—';
     azimuthEl.textContent = '—';
     return;
   }
 
-  const dx = (targetX - gunX) * COORD_SCALE;
-  const dy = (targetY - gunY) * COORD_SCALE;
+  const dx = targetXcm - gunXcm;
+  const dy = targetYcm - gunYcm;
   const distanceM = Math.hypot(dx, dy);
-  const distanceKm = distanceM / 1000;
+  const distanceMExact = Math.round(distanceM * 100) / 100;
   const azimuth = (Math.atan2(dx, dy) * 180) / Math.PI;
   const normAzimuth = azimuth < 0 ? azimuth + 360 : azimuth;
 
-  distanceKmEl.textContent = `${distanceKm.toFixed(2)} ${t('units.km')}`;
+  distanceKmEl.textContent = `${distanceMExact.toFixed(2)} ${t('units.meters')}`;
   azimuthEl.textContent = `${normAzimuth.toFixed(1)}${t('units.azimuth')}`;
   setResult(
     t('statusResult', {
-      distance: distanceKm.toFixed(2),
+      distance: distanceMExact.toFixed(2),
       azimuth: normAzimuth.toFixed(1),
     })
   );
