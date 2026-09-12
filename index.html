@@ -28,55 +28,59 @@
       <main class="container">
         <section class="card">
           <h2>1) Punkte</h2>
-          <div class="grid">
+          <div class="grid card-grid-top">
             <label>
               Waffe
               <select id="weaponSelect" aria-label="Waffe wählen"></select>
             </label>
-            <label>
-              Punkt 1 X
-              <input
-                id="gunX"
-                type="number"
-                inputmode="decimal"
-                placeholder="z. B. 8200"
-                step="1"
-              />
-            </label>
-            <label>
-              Punkt 1 Y
-              <input
-                id="gunY"
-                type="number"
-                inputmode="decimal"
-                placeholder="z. B. 7000"
-                step="1"
-              />
-            </label>
-            <label>
-              Punkt 2 X
-              <input
-                id="targetX"
-                type="number"
-                inputmode="decimal"
-                placeholder="z. B. 8350"
-                step="1"
-              />
-            </label>
-            <label>
-              Punkt 2 Y
-              <input
-                id="targetY"
-                type="number"
-                inputmode="decimal"
-                placeholder="z. B. 6900"
-                step="1"
-              />
-            </label>
-          </div>
-          <div class="actions">
-            <button id="calculateBtn" type="button">Berechnung aktualisieren</button>
-            <button id="pasteBtn" type="button">Koordinaten einfügen</button>
+            <div class="point-row">
+              <div class="point-label">eigene Position</div>
+              <label>
+                x
+                <input
+                  id="gunX"
+                  type="number"
+                  inputmode="decimal"
+                  placeholder="8200"
+                  step="1"
+                />
+              </label>
+              <label>
+                y
+                <input
+                  id="gunY"
+                  type="number"
+                  inputmode="decimal"
+                  placeholder="7000"
+                  step="1"
+                />
+              </label>
+              <button id="pasteGunBtn" type="button">eigene Position einfügen</button>
+            </div>
+            <div class="point-row">
+              <div class="point-label">Gegnerposition</div>
+              <label>
+                x
+                <input
+                  id="targetX"
+                  type="number"
+                  inputmode="decimal"
+                  placeholder="8350"
+                  step="1"
+                />
+              </label>
+              <label>
+                y
+                <input
+                  id="targetY"
+                  type="number"
+                  inputmode="decimal"
+                  placeholder="6900"
+                  step="1"
+                />
+              </label>
+              <button id="pasteTargetBtn" type="button">Gegnerposition einfügen</button>
+            </div>
           </div>
         </section>
 
