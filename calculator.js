@@ -206,6 +206,22 @@ function parseCoordinatePairFromText(text) {
   return null;
 }
 
+function safeGetStoredLanguage() {
+  try {
+    return localStorage.getItem('wardogs_language');
+  } catch (_error) {
+    return null;
+  }
+}
+
+function safeSetStoredLanguage(value) {
+  try {
+    localStorage.setItem('wardogs_language', value);
+  } catch (_error) {
+    // localStorage can be unavailable in some privacy contexts.
+  }
+}
+
 function setPointFromParsed(parsed, forTarget) {
   if (forTarget) {
     targetXInput.value = String(parsed.x);
@@ -342,7 +358,7 @@ function setLanguage(newLanguage, shouldSave = true) {
   currentLanguage = normalizedLanguage;
 
   if (shouldSave) {
-    localStorage.setItem('wardogs_language', currentLanguage);
+    safeSetStoredLanguage(currentLanguage);
   }
 
   applyTranslations();
@@ -378,7 +394,7 @@ function wireEvents() {
 }
 
 function init() {
-  const storedLanguage = localStorage.getItem('wardogs_language');
+  const storedLanguage = safeGetStoredLanguage();
   currentLanguage = I18N[storedLanguage] ? storedLanguage : DEFAULT_LANGUAGE;
   languageSelect.value = currentLanguage;
 

@@ -18,26 +18,32 @@
     <div class="page-shell">
       <header class="hero">
         <div class="top-controls">
-          <p class="eyebrow" data-i18n="eyebrow"></p>
+          <p class="eyebrow" data-i18n="eyebrow">Wardogs artillery calculator</p>
           <label class="lang-switch">
-            <span id="languageLabel" data-i18n="languageLabel"></span>
+            <span id="languageLabel" data-i18n="languageLabel">Language</span>
             <select id="languageSelect" aria-label="Language / Sprache">
               <option value="en">English</option>
               <option value="de">Deutsch</option>
             </select>
           </label>
         </div>
-        <h1 data-i18n="appTitle"></h1>
-        <p id="heroDescription" data-i18n="heroDescription"></p>
+        <h1 data-i18n="appTitle">Artillery Distance Calculator</h1>
+        <p id="heroDescription" data-i18n="heroDescription">
+          Copy two game positions and get distance + azimuth instantly. The game
+          itself uses distance for fire calculation.
+        </p>
       </header>
 
       <main class="container">
         <section class="card">
-          <h2 data-i18n="sectionPoints"></h2>
-          <p class="note copy-hint" data-i18n-html="copyHint"></p>
+          <h2 data-i18n="sectionPoints">1) Points</h2>
+          <p class="note copy-hint" data-i18n-html="copyHint">
+            In-game copy-paste format: <code>x98.43, y110.38</code> or
+            <code>x: 98.43, y: 110.38</code>
+          </p>
           <div class="grid card-grid-top">
             <div class="point-row">
-              <div class="point-label" data-i18n="ownPositionLabel"></div>
+              <div class="point-label" data-i18n="ownPositionLabel">own position</div>
               <div class="coord-field">
                 <span class="coord-axis">x</span>
                 <input
@@ -63,11 +69,11 @@
                 />
               </div>
               <button id="pasteGunBtn" class="paste-btn" type="button">
-                <span data-i18n="pasteOwnBtn"></span>
+                <span data-i18n="pasteOwnBtn">Paste own position</span>
               </button>
             </div>
             <div class="point-row">
-              <div class="point-label" data-i18n="enemyPositionLabel"></div>
+              <div class="point-label" data-i18n="enemyPositionLabel">Enemy position</div>
               <div class="coord-field">
                 <span class="coord-axis">x</span>
                 <input
@@ -93,40 +99,40 @@
                 />
               </div>
               <button id="pasteTargetBtn" class="paste-btn" type="button">
-                <span data-i18n="pasteEnemyBtn"></span>
+                <span data-i18n="pasteEnemyBtn">Paste enemy position</span>
               </button>
             </div>
           </div>
           <div class="actions">
             <button id="resetBtn" type="button" class="ghost">
-              <span data-i18n="resetBtn"></span>
+              <span data-i18n="resetBtn">Clear all fields</span>
             </button>
           </div>
         </section>
 
         <section class="card">
-          <h2 data-i18n="sectionResult"></h2>
+          <h2 data-i18n="sectionResult">2) Result</h2>
           <div class="result-grid">
-            <div><span data-i18n="resultDistance"></span><strong id="distanceKm">—</strong></div>
-            <div><span data-i18n="resultAzimuth"></span><strong id="azimuth">—</strong></div>
+            <div><span data-i18n="resultDistance">Distance</span><strong id="distanceKm">—</strong></div>
+            <div><span data-i18n="resultAzimuth">Azimuth</span><strong id="azimuth">—</strong></div>
           </div>
-          <p id="rangeMessage" class="note" data-i18n="statusReady"></p>
+          <p id="rangeMessage" class="note" data-i18n="statusReady">Enter values and result is calculated automatically.</p>
         </section>
 
         <section class="card card--wide">
-          <h2 data-i18n="sectionNotes"></h2>
+          <h2 data-i18n="sectionNotes">3) Notes</h2>
           <ul>
             <li>
-              <span data-i18n="noteMethod"></span>
+              <span data-i18n="noteMethod">The game only needs distance for fire solution. Elevation tables are intentionally not used.</span>
             </li>
             <li>
-              <span data-i18n="noteUseInGame"></span>
+              <span data-i18n="noteUseInGame">Always verify with at least one correction shot in-game.</span>
             </li>
             <li>
-              <a id="repoLink" href="https://github.com/Gamewalker/wardogs-artillery-calculator" target="_blank" rel="noopener noreferrer"></a>
+              <a id="repoLink" href="https://github.com/Gamewalker/wardogs-artillery-calculator" target="_blank" rel="noopener noreferrer">GitHub repository</a>
             </li>
             <li>
-              <a id="videoLink" href="https://youtu.be/9X8U-eHCMgI?is=m-4F3UgNOu2_LIki" target="_blank" rel="noopener noreferrer"></a>
+              <a id="videoLink" href="https://youtu.be/9X8U-eHCMgI?is=m-4F3UgNOu2_LIki" target="_blank" rel="noopener noreferrer">Reference video source</a>
             </li>
           </ul>
         </section>
