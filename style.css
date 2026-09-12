@@ -67,11 +67,12 @@ body {
 .point-row {
   display: grid;
   gap: 0.6rem;
-  grid-template-columns: 1.35fr 1fr 1fr auto;
+  grid-template-columns: 1.35fr minmax(95px, 1fr) minmax(95px, 1fr) auto;
   align-items: end;
   padding: 0.65rem;
   border: 1px dashed rgba(163, 184, 255, 0.38);
   border-radius: 12px;
+  min-height: 94px;
 }
 
 .point-label {
@@ -83,7 +84,11 @@ body {
 
 .point-row label {
   margin: 0;
-  min-width: 110px;
+  min-width: 95px;
+}
+
+.paste-btn {
+  min-height: 44px;
 }
 
 label {
@@ -113,10 +118,6 @@ button {
   font-weight: 700;
 }
 
-button.ghost {
-  background: transparent;
-}
-
 button:hover {
   filter: brightness(1.08);
 }
@@ -126,11 +127,85 @@ button:hover {
   display: flex;
   gap: 0.7rem;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .actions button {
   width: auto;
   min-width: 180px;
+}
+
+.copy-hint {
+  margin-bottom: 0.7rem;
+}
+
+.error {
+  color: #ffb4b4;
+}
+
+button.ghost {
+  background: transparent;
+  border-color: rgba(159, 176, 255, 0.58);
+  color: #dce4ff;
+}
+
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(680px, calc(100% - 1rem));
+    padding: 1rem 0;
+  }
+
+  .card-grid-top {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .point-row {
+    gap: 0.55rem;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .point-label {
+    grid-column: 1 / -1;
+  }
+
+  .point-row .paste-btn {
+    grid-column: 1 / -1;
+  }
+
+  .point-row label {
+    min-width: 0;
+  }
+
+  label {
+    font-size: 0.95rem;
+  }
+
+  input,
+  select,
+  button {
+    min-height: 44px;
+  }
+
+  .actions {
+    justify-content: stretch;
+  }
+
+  .actions button {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 460px) {
+  .point-row {
+    grid-template-columns: 1fr;
+  }
+
+  .point-row .paste-btn {
+    margin-top: 0.2rem;
+  }
 }
 
 .result-grid {

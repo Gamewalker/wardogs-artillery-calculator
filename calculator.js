@@ -9,6 +9,7 @@ const elevationEl = document.getElementById('elevation');
 const rangeMessageEl = document.getElementById('rangeMessage');
 const pasteGunBtn = document.getElementById('pasteGunBtn');
 const pasteTargetBtn = document.getElementById('pasteTargetBtn');
+const resetBtn = document.getElementById('resetBtn');
 
 const COORD_SCALE = 100;
 
@@ -198,7 +199,7 @@ function setResult(message, isError = false) {
 
 function parseCoordinatePairFromText(text) {
   const normalized = String(text ?? '').replace(/\r?\n/g, ' ');
-  const labelRegex = /\b([xyXY])\s*[:=]?\s*(-?\d+(?:[.,]\d+)?)/g;
+  const labelRegex = /\b([xXyY])\s*[:=]?\s*(-?\d+(?:[.,]\d+)?)/g;
   const matches = [...normalized.matchAll(labelRegex)];
 
   if (matches.length) {
@@ -232,6 +233,13 @@ function parseCoordinatePairFromText(text) {
   return null;
 }
 
+function applyDefaultValues() {
+  gunXInput.value = '98.43';
+  gunYInput.value = '110.38';
+  targetXInput.value = '108.90';
+  targetYInput.value = '112.50';
+}
+
 function setPointFromParsed(parsed, forTarget) {
   if (forTarget) {
     targetXInput.value = String(parsed.x);
@@ -248,7 +256,7 @@ async function pasteCoordinates(forTarget) {
     const parsed = parseCoordinatePairFromText(text);
 
     if (!parsed) {
-      setResult('Zwischenablage enthält keine xy-Koordinate im Format x y.', true);
+      setResult('Zwischenablage enthält kein Spiel-Format: x98.43, y110.38', true);
       return;
     }
 
@@ -376,6 +384,16 @@ function wireEvents() {
 
   pasteGunBtn.addEventListener('click', () => pasteCoordinates(false));
   pasteTargetBtn.addEventListener('click', () => pasteCoordinates(true));
+  resetBtn.addEventListener('click', () => {
+    gunXInput.value = '';
+    gunYInput.value = '';
+    targetXInput.value = '';
+    targetYInput.value = '';
+    distanceKmEl.textContent = '—';
+    azimuthEl.textContent = '—';
+    elevationEl.textContent = '—';
+    setResult('Felder geleert. Neue Koordinaten einfügen oder manuell eingeben.');
+  });
 
   attachPasteToInputPair(gunXInput, gunYInput);
   attachPasteToInputPair(targetXInput, targetYInput);
@@ -399,11 +417,7 @@ async function init() {
 
     populateWeapons();
     wireEvents();
-
-    gunXInput.value = '8200';
-    gunYInput.value = '7000';
-    targetXInput.value = '8350';
-    targetYInput.value = '6900';
+    applyDefaultValues();
     calculate();
   } catch (error) {
     setResult(`Fehler beim Laden der Waffendaten: ${error.message}`, true);

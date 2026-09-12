@@ -12,7 +12,12 @@ den Community-Ballistiktabellen (L81-Mörser + SPH-2).
 - Interpolierte Schusswinkel-Berechnung aus der Tabelle
 - Unterstützung von Low-/High-Arc für SPH-2
 - Schnellster Workflow: 2 Punkte einfügen (Koordinate 1 + Koordinate 2) und sofort Ergebnis.
-- Schnelles Einfügen per **Zwischenablage**: Ein Klick füllt automatisch beide Punkte aus kopiertem Spieltext.
+- Schnelles Einfügen per **Zwischenablage** mit den Buttons:
+  - `eigene Position einfügen`
+  - `Gegnerposition einfügen`
+  - Unterstützte Formate: `x98.43, y110.38` oder `x: 98.43 y: 110.38`
+- Eingaben werden bei jeder Änderung automatisch berechnet (kein extra „Berechnen“-Button).
+- Zusätzlicher Reset: `Alle Felder leeren`.
 
 ## Voraussetzungen
 
