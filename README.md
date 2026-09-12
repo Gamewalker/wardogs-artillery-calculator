@@ -1,22 +1,17 @@
-# Wardogs Artillerie-Weite Rechner
+# Wardogs Artillerie Distanz-Rechner
 
-Ein statischer GitHub-Pages Rechner für Distanz, Azimut und Elevation basierend auf
-den Community-Ballistiktabellen (L81-Mörser + SPH-2).
+Ein statischer GitHub-Pages Rechner für Distanz und Azimut aus zwei Spielkoordinaten.
 
 ## Features
 
 - Eingabe von Geschütz- und Zielkoordinaten
-- Waffenauswahl aus JSON-Daten
 - Sprachumschaltung (`en`, `de`), Standard ist Englisch.
-- Umrechnung der Entfernung in Meter/Kilometer
-- Azimut-Berechnung im Spiel-Format (`atan2(dx, dy)`)
-- Interpolierte Schusswinkel-Berechnung aus der Tabelle
-- Unterstützung von Low-/High-Arc für SPH-2
-- Schnellster Workflow: 2 Punkte einfügen (Koordinate 1 + Koordinate 2) und sofort Ergebnis.
+- Distanz- + Azimut-Berechnung im Spiel-Format (`atan2(dx, dy)`)
+- Schnellster Workflow: 2 Punkte einfügen (eigene Position + Gegnerposition) und sofort Ergebnis.
 - Schnelles Einfügen per **Zwischenablage** mit den Buttons:
   - `eigene Position einfügen`
   - `Gegnerposition einfügen`
-  - Unterstützte Formate: `x98.43, y110.38` oder `x: 98.43 y: 110.38`
+  - Unterstützte Formate: `x98.43, y110.38` oder `x: 98.43, y: 110.38`
 - Eingaben werden bei jeder Änderung automatisch berechnet (kein extra „Berechnen“-Button).
 - Zusätzlicher Reset: `Alle Felder leeren`.
 - Referenzquelle:  
@@ -29,8 +24,7 @@ den Community-Ballistiktabellen (L81-Mörser + SPH-2).
 
 ## Datenmodell
 
-- `data/weapons.json` enthält die Schussentfernungen zu Mil-Tabellen.
-- Die App ist rein clientseitig (kein Backend).
+Die App ist rein clientseitig (kein Backend).
 
 ## Lokal starten
 
