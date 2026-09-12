@@ -82,13 +82,23 @@ body {
   text-transform: lowercase;
 }
 
-.point-row label {
-  margin: 0;
+.coord-field {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
   min-width: 95px;
+}
+
+.coord-axis {
+  font-size: 0.9rem;
+  color: #b5c5ef;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .paste-btn {
   min-height: 44px;
+  margin-left: 0.2rem;
 }
 
 label {
@@ -172,6 +182,7 @@ button.ghost {
 
   .point-row .paste-btn {
     grid-column: 1 / -1;
+    margin-left: 0;
   }
 
   .point-row label {

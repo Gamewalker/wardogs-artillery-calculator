@@ -199,8 +199,8 @@ function setResult(message, isError = false) {
 
 function parseCoordinatePairFromText(text) {
   const normalized = String(text ?? '').replace(/\r?\n/g, ' ');
-  const labelRegex = /\b([xXyY])\s*[:=]?\s*(-?\d+(?:[.,]\d+)?)/g;
-  const matches = [...normalized.matchAll(labelRegex)];
+  const labeledRegex = /([xXyY])\s*[:=]?\s*(-?\d+(?:[.,]\d+)?)/g;
+  const matches = [...normalized.matchAll(labeledRegex)];
 
   if (matches.length) {
     let x;

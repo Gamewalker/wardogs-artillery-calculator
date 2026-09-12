@@ -39,52 +39,56 @@
             </label>
             <div class="point-row">
               <div class="point-label">eigene Position</div>
-              <label>
-                x
+              <div class="coord-field">
+                <span class="coord-axis">x</span>
                 <input
                   id="gunX"
                   type="number"
                   inputmode="decimal"
                   placeholder="98.43"
                   step="0.01"
+                  aria-label="eigene Position x"
                 />
-              </label>
-              <label>
-                y
+              </div>
+              <div class="coord-field">
+                <span class="coord-axis">y</span>
                 <input
                   id="gunY"
                   type="number"
                   inputmode="decimal"
                   placeholder="110.38"
                   step="0.01"
+                  aria-label="eigene Position y"
                 />
-              </label>
+              </div>
               <button id="pasteGunBtn" class="paste-btn" type="button">
                 eigene Position einfügen
               </button>
             </div>
             <div class="point-row">
               <div class="point-label">Gegnerposition</div>
-              <label>
-                x
+              <div class="coord-field">
+                <span class="coord-axis">x</span>
                 <input
                   id="targetX"
                   type="number"
                   inputmode="decimal"
                   placeholder="108.90"
                   step="0.01"
+                  aria-label="Gegnerposition x"
                 />
-              </label>
-              <label>
-                y
+              </div>
+              <div class="coord-field">
+                <span class="coord-axis">y</span>
                 <input
                   id="targetY"
                   type="number"
                   inputmode="decimal"
                   placeholder="112.50"
                   step="0.01"
+                  aria-label="Gegnerposition y"
                 />
-              </label>
+              </div>
               <button id="pasteTargetBtn" class="paste-btn" type="button">
                 Gegnerposition einfügen
               </button>
