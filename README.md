@@ -7,6 +7,7 @@ den Community-Ballistiktabellen (L81-Mörser + SPH-2).
 
 - Eingabe von Geschütz- und Zielkoordinaten
 - Waffenauswahl aus JSON-Daten
+- Sprachumschaltung (`en`, `de`), Standard ist Englisch.
 - Umrechnung der Entfernung in Meter/Kilometer
 - Azimut-Berechnung im Spiel-Format (`atan2(dx, dy)`)
 - Interpolierte Schusswinkel-Berechnung aus der Tabelle
@@ -18,6 +19,8 @@ den Community-Ballistiktabellen (L81-Mörser + SPH-2).
   - Unterstützte Formate: `x98.43, y110.38` oder `x: 98.43 y: 110.38`
 - Eingaben werden bei jeder Änderung automatisch berechnet (kein extra „Berechnen“-Button).
 - Zusätzlicher Reset: `Alle Felder leeren`.
+- Referenzquelle:  
+  https://youtu.be/9X8U-eHCMgI?is=m-4F3UgNOu2_LIki
 
 ## Voraussetzungen
 

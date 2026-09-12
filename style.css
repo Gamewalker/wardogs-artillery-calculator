@@ -26,6 +26,25 @@ body {
   margin-bottom: 1.2rem;
 }
 
+.top-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.95rem;
+}
+
+.lang-switch select {
+  min-width: 120px;
+}
+
 .hero h1 {
   margin: 0.1rem 0;
 }
@@ -98,7 +117,7 @@ body {
 
 .paste-btn {
   min-height: 44px;
-  margin-left: 0.2rem;
+  margin-left: 0.5rem;
 }
 
 label {
@@ -176,6 +195,10 @@ button.ghost {
     align-items: stretch;
   }
 
+  .coord-field {
+    grid-column: auto;
+  }
+
   .point-label {
     grid-column: 1 / -1;
   }
@@ -206,6 +229,10 @@ button.ghost {
   .actions button {
     width: 100%;
     min-width: 0;
+  }
+
+  .top-controls {
+    gap: 0.75rem;
   }
 }
 

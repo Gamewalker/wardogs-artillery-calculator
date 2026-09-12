@@ -1,44 +1,47 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Wardogs Artillerie-Weite Rechner</title>
+    <title data-i18n-title="appTitle">Artillery Range Calculator</title>
     <meta
       name="description"
-      content="Statische Rechnung für Distanz, Azimut und Elevation für L81-Mörser sowie SPH-2 in WARDOGS."
+      data-i18n-content="metaDescription"
+      content="Static distance, azimuth and elevation calculator for L81 mortar and SPH-2 in WARDOGS."
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="page-shell">
       <header class="hero">
-        <p class="eyebrow">Wardogs artillery calculator</p>
-        <h1>Artillerie-Weite Rechner</h1>
-        <p>
-          Basierend auf dem YouTube-Guide „How to ALWAYS Land Mortars or Artillery“:
-          erst Distanz und Winkel rechnen, dann Elevation nach
-          Waffentabelle eintragen.
-        </p>
+      <div class="top-controls">
+        <p class="eyebrow" data-i18n="eyebrow"></p>
+        <label class="lang-switch">
+          <span id="languageLabel" data-i18n="languageLabel"></span>
+          <select id="languageSelect" aria-label="Language / Sprache">
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </label>
+      </div>
+      <h1 data-i18n="appTitle"></h1>
+      <p id="heroDescription" data-i18n="heroDescription"></p>
       </header>
 
       <main class="container">
         <section class="card">
-          <h2>1) Punkte</h2>
-          <p class="note copy-hint">
-            Copy-Paste-Format aus dem Spiel: <code>x98.43, y110.38</code> oder
-            <code>x: 98.43 y: 110.38</code>
-          </p>
+          <h2 data-i18n="sectionPoints"></h2>
+          <p class="note copy-hint" data-i18n-html="copyHint"></p>
           <div class="grid card-grid-top">
             <label>
-              Waffe
+              <span data-i18n="labelWeapon"></span>
               <select id="weaponSelect" aria-label="Waffe wählen"></select>
             </label>
             <div class="point-row">
-              <div class="point-label">eigene Position</div>
+              <div class="point-label" data-i18n="ownPositionLabel"></div>
               <div class="coord-field">
                 <span class="coord-axis">x</span>
                 <input
@@ -47,7 +50,8 @@
                   inputmode="decimal"
                   placeholder="98.43"
                   step="0.01"
-                  aria-label="eigene Position x"
+                  data-i18n-placeholder="inputPlaceholderOwnX"
+                  aria-label="Own x"
                 />
               </div>
               <div class="coord-field">
@@ -58,15 +62,16 @@
                   inputmode="decimal"
                   placeholder="110.38"
                   step="0.01"
-                  aria-label="eigene Position y"
+                  data-i18n-placeholder="inputPlaceholderOwnY"
+                  aria-label="Own y"
                 />
               </div>
               <button id="pasteGunBtn" class="paste-btn" type="button">
-                eigene Position einfügen
+                <span data-i18n="pasteOwnBtn"></span>
               </button>
             </div>
             <div class="point-row">
-              <div class="point-label">Gegnerposition</div>
+              <div class="point-label" data-i18n="enemyPositionLabel"></div>
               <div class="coord-field">
                 <span class="coord-axis">x</span>
                 <input
@@ -75,7 +80,8 @@
                   inputmode="decimal"
                   placeholder="108.90"
                   step="0.01"
-                  aria-label="Gegnerposition x"
+                  data-i18n-placeholder="inputPlaceholderTargetX"
+                  aria-label="Enemy x"
                 />
               </div>
               <div class="coord-field">
@@ -86,46 +92,49 @@
                   inputmode="decimal"
                   placeholder="112.50"
                   step="0.01"
-                  aria-label="Gegnerposition y"
+                  data-i18n-placeholder="inputPlaceholderTargetY"
+                  aria-label="Enemy y"
                 />
               </div>
-              <button id="pasteTargetBtn" class="paste-btn" type="button">
-                Gegnerposition einfügen
+                <button id="pasteTargetBtn" class="paste-btn" type="button">
+                  <span data-i18n="pasteEnemyBtn"></span>
               </button>
             </div>
           </div>
           <div class="actions">
-            <button id="resetBtn" type="button" class="ghost">Alle Felder leeren</button>
+            <button id="resetBtn" type="button" class="ghost">
+              <span data-i18n="resetBtn"></span>
+            </button>
           </div>
         </section>
 
         <section class="card">
-          <h2>2) Ergebnis</h2>
+          <h2 data-i18n="sectionResult"></h2>
           <div class="result-grid">
-            <div><span>Entfernung</span><strong id="distanceKm">—</strong></div>
-            <div><span>Azimut</span><strong id="azimuth">—</strong></div>
-            <div><span>Elevation</span><strong id="elevation">—</strong></div>
+            <div><span data-i18n="resultDistance"></span><strong id="distanceKm">—</strong></div>
+            <div><span data-i18n="resultAzimuth"></span><strong id="azimuth">—</strong></div>
+            <div><span data-i18n="resultElevation"></span><strong id="elevation">—</strong></div>
           </div>
-          <p id="rangeMessage" class="note">Setze Werte ein, dann wird gerechnet.</p>
+          <p id="rangeMessage" class="note" data-i18n="statusReady"></p>
         </section>
 
         <section class="card card--wide">
-          <h2>3) Hinweise</h2>
+          <h2 data-i18n="sectionNotes"></h2>
           <ul>
             <li>
-              Distanz wird im Video als Grundlage für die Lösung genommen: zuerst
-              Geometrie (dx/dy/Distanz/Azimut), danach
-              <strong>Mil-Wert aus Ballistik-Tabelle</strong>.
+              <span data-i18n="noteMethod"></span>
             </li>
             <li>
-              Der Rechner nutzt dieselben Community-Tabellenwerte für
-              L81-Mörser und SPH-2, inkl. Low/High-Bahnen (SPH-2).
+              <span data-i18n="noteWeaponData"></span>
             </li>
             <li>
-              Teste die Empfehlung im Spiel mindestens mit einem Korrektur-Schuss.
+              <span data-i18n="noteUseInGame"></span>
             </li>
             <li>
-              Für reine GitHub-Pages-Nutzung: <code>index.html</code> + <code>data/weapons.json</code> + <code>style.css</code> + <code>calculator.js</code> + Action.
+              <a id="repoLink" href="https://github.com/Gamewalker/wardogs-artillery-calculator" target="_blank" rel="noopener noreferrer"></a>
+            </li>
+            <li>
+              <a id="videoLink" href="https://youtu.be/9X8U-eHCMgI?is=m-4F3UgNOu2_LIki" target="_blank" rel="noopener noreferrer"></a>
             </li>
           </ul>
         </section>
