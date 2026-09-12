@@ -305,6 +305,237 @@ const I18N = {
       clearBtn: 'Tüm alanları temizle',
     },
   },
+  it: {
+    languageLabel: 'Lingua',
+    eyebrow: 'Calcolatore artiglieria Wardogs',
+    appTitle: 'Calcolatore distanza artiglieria',
+    metaDescription: 'Calcolatore della distanza statica per le coordinate WARDOGS.',
+    heroDescription:
+      'Copia due posizioni nel gioco e ottieni subito la distanza. Il gioco usa la distanza per il calcolo del tiro.',
+    sectionPoints: '1) Punti',
+    sectionResult: '2) Risultato',
+    sectionNotes: '3) Note',
+    copyHint:
+      'Formato di copia dal gioco: <code>x98.43, y110.38</code>&nbsp;o&nbsp;<code>x: 98.43, y: 110.38</code>',
+    ownPositionLabel: 'posizione propria',
+    enemyPositionLabel: 'posizione nemica',
+    pasteOwnBtn: 'incolla posizione propria',
+    pasteEnemyBtn: 'incolla posizione nemica',
+    resetBtn: 'Svuota tutti i campi',
+    resultDistance: 'Distanza',
+    statusReady: 'Inserisci i valori e il risultato viene calcolato automaticamente.',
+    statusResult: 'Distanza {distance} m.',
+    noteMethod:
+      'Il gioco usa solo la distanza per il calcolo del tiro. Le tabelle di elevazione non sono usate.',
+    noteUseInGame: 'Verifica sempre con almeno un tiro di correzione in gioco.',
+    noteRepoLink: 'Repository GitHub',
+    noteVideoLink: 'Video di riferimento',
+    inputPlaceholderOwnX: '98.43',
+    inputPlaceholderOwnY: '110.38',
+    inputPlaceholderTargetX: '108.90',
+    inputPlaceholderTargetY: '112.50',
+    statusMessages: {
+      missingInputs: 'Inserisci valori validi per la propria e la posizione nemica.',
+      clipboardInvalid:
+        'La cronologia appunti non ha il formato del gioco. Atteso: x98.53, y109.03',
+      clipboardApplied: 'Coordinate incollate dagli appunti.',
+      clipboardFromPaste: 'Coordinate copiate nei campi.',
+      clipboardError:
+        'Impossibile leggere gli appunti. Incolla manualmente.',
+      cleared:
+        'Campi puliti. Incolla o inserisci nuove coordinate.',
+    },
+    units: {
+      meters: 'm',
+    },
+    aria: {
+      ownX: 'posizione propria x',
+      ownY: 'posizione propria y',
+      enemyX: 'posizione nemica x',
+      enemyY: 'posizione nemica y',
+      ownPositionLabel: 'posizione propria',
+      enemyPositionLabel: 'posizione nemica',
+      languageSelect: 'Lingua',
+      pasteOwnBtn: 'incolla posizione propria',
+      pasteEnemyBtn: 'incolla posizione nemica',
+      clearBtn: 'Svuota tutti i campi',
+    },
+  },
+  pl: {
+    languageLabel: 'Język',
+    eyebrow: 'Kalkulator artyleryjski Wardogs',
+    appTitle: 'Kalkulator dystansu artyleryjskiego',
+    metaDescription:
+      'Statyczny kalkulator odległości dla współrzędnych WARDOGS.',
+    heroDescription:
+      'Skopiuj dwie pozycje z gry i natychmiast uzyskaj odległość. Gra używa wyłącznie odległości do wyliczenia strzału.',
+    sectionPoints: '1) Punkty',
+    sectionResult: '2) Wynik',
+    sectionNotes: '3) Uwagi',
+    copyHint:
+      'Format kopiowania z gry: <code>x98.43, y110.38</code>&nbsp;lub&nbsp;<code>x: 98.43, y: 110.38</code>',
+    ownPositionLabel: 'własna pozycja',
+    enemyPositionLabel: 'pozycja wroga',
+    pasteOwnBtn: 'wklej własną pozycję',
+    pasteEnemyBtn: 'wklej pozycję wroga',
+    resetBtn: 'Wyczyść wszystkie pola',
+    resultDistance: 'Odległość',
+    statusReady: 'Wpisz wartości, a wynik obliczy się automatycznie.',
+    statusResult: 'Odległość {distance} m.',
+    noteMethod:
+      'Gra do obliczenia strzału używa tylko odległości. Tabele elewacji są tutaj pominięte.',
+    noteUseInGame: 'Zawsze potwierdź wynik przynajmniej jednym strzałem korygującym.',
+    noteRepoLink: 'Repozytorium GitHub',
+    noteVideoLink: 'Film referencyjny',
+    inputPlaceholderOwnX: '98.43',
+    inputPlaceholderOwnY: '110.38',
+    inputPlaceholderTargetX: '108.90',
+    inputPlaceholderTargetY: '112.50',
+    statusMessages: {
+      missingInputs: 'Podaj prawidłowe wartości własnej pozycji i celu.',
+      clipboardInvalid:
+        'Schowek nie ma formatu z gry. Oczekiwane: x98.53, y109.03',
+      clipboardApplied: 'Współrzędne wklejone z schowka.',
+      clipboardFromPaste: 'Współrzędne wklejone do pól.',
+      clipboardError:
+        'Nie można odczytać schowka. Wklej ręcznie.',
+      cleared:
+        'Pola wyczyszczone. Wklej lub wpisz nowe współrzędne.',
+    },
+    units: {
+      meters: 'm',
+    },
+    aria: {
+      ownX: 'własna pozycja x',
+      ownY: 'własna pozycja y',
+      enemyX: 'pozycja wroga x',
+      enemyY: 'pozycja wroga y',
+      ownPositionLabel: 'własna pozycja',
+      enemyPositionLabel: 'pozycja wroga',
+      languageSelect: 'Język',
+      pasteOwnBtn: 'wklej własną pozycję',
+      pasteEnemyBtn: 'wklej pozycję wroga',
+      clearBtn: 'Wyczyść wszystkie pola',
+    },
+  },
+  ru: {
+    languageLabel: 'Язык',
+    eyebrow: 'Калькулятор артиллерийской дальности Wardogs',
+    appTitle: 'Калькулятор расстояния артиллерии',
+    metaDescription:
+      'Статический калькулятор расстояния для координат WARDOGS.',
+    heroDescription:
+      'Скопируйте две игровые позиции и сразу получите расстояние. Игра использует только расстояние для расчета выстрела.',
+    sectionPoints: '1) Точки',
+    sectionResult: '2) Результат',
+    sectionNotes: '3) Примечания',
+    copyHint:
+      'Формат копирования в игре: <code>x98.43, y110.38</code>&nbsp;или&nbsp;<code>x: 98.43, y: 110.38</code>',
+    ownPositionLabel: 'своя позиция',
+    enemyPositionLabel: 'позиция врага',
+    pasteOwnBtn: 'вставить свою позицию',
+    pasteEnemyBtn: 'вставить позицию врага',
+    resetBtn: 'Очистить все поля',
+    resultDistance: 'Расстояние',
+    statusReady: 'Введите значения, и результат будет рассчитан автоматически.',
+    statusResult: 'Расстояние {distance} м.',
+    noteMethod:
+      'Для вычисления выстрела игра использует только расстояние. Таблицы угла возвышения здесь не используются.',
+    noteUseInGame:
+      'Проверьте результат в игре хотя бы одним корректирующим выстрелом.',
+    noteRepoLink: 'GitHub репозиторий',
+    noteVideoLink: 'Референсное видео',
+    inputPlaceholderOwnX: '98.43',
+    inputPlaceholderOwnY: '110.38',
+    inputPlaceholderTargetX: '108.90',
+    inputPlaceholderTargetY: '112.50',
+    statusMessages: {
+      missingInputs:
+        'Введите корректные значения своей позиции и позиции противника.',
+      clipboardInvalid:
+        'Буфер обмена не соответствует игровому формату. Ожидается: x98.53, y109.03',
+      clipboardApplied: 'Координаты вставлены из буфера обмена.',
+      clipboardFromPaste: 'Координаты вставлены в поля.',
+      clipboardError:
+        'Не удалось прочитать буфер обмена. Вставьте вручную.',
+      cleared:
+        'Поля очищены. Вставьте или введите новые координаты.',
+    },
+    units: {
+      meters: 'м',
+    },
+    aria: {
+      ownX: 'своя позиция x',
+      ownY: 'своя позиция y',
+      enemyX: 'позиция врага x',
+      enemyY: 'позиция врага y',
+      ownPositionLabel: 'своя позиция',
+      enemyPositionLabel: 'позиция врага',
+      languageSelect: 'Язык',
+      pasteOwnBtn: 'вставить свою позицию',
+      pasteEnemyBtn: 'вставить позицию врага',
+      clearBtn: 'Очистить все поля',
+    },
+  },
+  pt: {
+    languageLabel: 'Idioma',
+    eyebrow: 'Calculadora de artilharia Wardogs',
+    appTitle: 'Calculadora de distância de artilharia',
+    metaDescription:
+      'Calculadora de distância estática para coordenadas WARDOGS.',
+    heroDescription:
+      'Cole duas posições do jogo e obtenha a distância imediatamente. O jogo usa apenas a distância para o cálculo do disparo.',
+    sectionPoints: '1) Pontos',
+    sectionResult: '2) Resultado',
+    sectionNotes: '3) Notas',
+    copyHint:
+      'Formato de cópia no jogo: <code>x98.43, y110.38</code>&nbsp;ou&nbsp;<code>x: 98.43, y: 110.38</code>',
+    ownPositionLabel: 'posição própria',
+    enemyPositionLabel: 'posição inimiga',
+    pasteOwnBtn: 'colar posição própria',
+    pasteEnemyBtn: 'colar posição inimiga',
+    resetBtn: 'Limpar todos os campos',
+    resultDistance: 'Distância',
+    statusReady:
+      'Insira os valores e o resultado é calculado automaticamente.',
+    statusResult: 'Distância {distance} m.',
+    noteMethod:
+      'O jogo precisa apenas da distância para o cálculo do tiro. Tabelas de elevação não são usadas.',
+    noteUseInGame: 'Sempre verifique com pelo menos um tiro de correção no jogo.',
+    noteRepoLink: 'Repositório GitHub',
+    noteVideoLink: 'Vídeo de referência',
+    inputPlaceholderOwnX: '98.43',
+    inputPlaceholderOwnY: '110.38',
+    inputPlaceholderTargetX: '108.90',
+    inputPlaceholderTargetY: '112.50',
+    statusMessages: {
+      missingInputs:
+        'Insira valores válidos para sua posição e a do inimigo.',
+      clipboardInvalid:
+        'A área de transferência não corresponde ao formato do jogo. Esperado: x98.53, y109.03',
+      clipboardApplied: 'Coordenadas coladas da área de transferência.',
+      clipboardFromPaste: 'Coordenadas coladas nos campos.',
+      clipboardError:
+        'Não foi possível ler a área de transferência. Cole manualmente.',
+      cleared:
+        'Campos limpos. Cole ou digite novas coordenadas.',
+    },
+    units: {
+      meters: 'm',
+    },
+    aria: {
+      ownX: 'posição própria x',
+      ownY: 'posição própria y',
+      enemyX: 'posição inimiga x',
+      enemyY: 'posição inimiga y',
+      ownPositionLabel: 'posição própria',
+      enemyPositionLabel: 'posição inimiga',
+      languageSelect: 'Idioma',
+      pasteOwnBtn: 'colar posição própria',
+      pasteEnemyBtn: 'colar posição inimiga',
+      clearBtn: 'Limpar todos os campos',
+    },
+  },
 };
 
 function t(key, vars = {}) {
