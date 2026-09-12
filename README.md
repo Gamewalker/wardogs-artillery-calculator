@@ -61,3 +61,5 @@ Starte mit einem Korrekturschuss und passe die Werte im Spielverlauf an.
 ## License
 
 MIT
+
+Deploy status: aktive GitHub-Pages-Veröffentlichung automatisch auf push.
