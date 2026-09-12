@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Wardogs Artillerie-Weite Rechner</title>
+    <meta
+      name="description"
+      content="Statische Rechnung für Distanz, Azimut und Elevation für L81-Mörser sowie SPH-2 in WARDOGS."
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <p class="eyebrow">Wardogs artillery calculator</p>
+        <h1>Artillerie-Weite Rechner</h1>
+        <p>
+          Basierend auf dem YouTube-Guide „How to ALWAYS Land Mortars or Artillery“:
+          erst Distanz und Winkel rechnen, dann Elevation nach
+          Waffentabelle eintragen.
+        </p>
+      </header>
+
+      <main class="container">
+        <section class="card">
+          <h2>1) Schussposition</h2>
+          <div class="grid">
+            <label>
+              Waffe
+              <select id="weaponSelect" aria-label="Waffe wählen"></select>
+            </label>
+            <label>
+              Koordinatenskalierung
+              <select id="scaleSelect" aria-label="Koordinatenskalierung">
+                <option value="100">100 m pro Einheit (Wardogs Standard)</option>
+                <option value="1">1 m pro Einheit</option>
+              </select>
+            </label>
+            <label>
+              Kanone X
+              <input
+                id="gunX"
+                type="number"
+                inputmode="decimal"
+                placeholder="z. B. 8200"
+                step="1"
+              />
+            </label>
+            <label>
+              Kanone Y
+              <input
+                id="gunY"
+                type="number"
+                inputmode="decimal"
+                placeholder="z. B. 7000"
+                step="1"
+              />
+            </label>
+            <label>
+              Ziel X
+              <input
+                id="targetX"
+                type="number"
+                inputmode="decimal"
+                placeholder="z. B. 8350"
+                step="1"
+              />
+            </label>
+            <label>
+              Ziel Y
+              <input
+                id="targetY"
+                type="number"
+                inputmode="decimal"
+                placeholder="z. B. 6900"
+                step="1"
+              />
+            </label>
+          </div>
+          <div class="actions">
+            <button id="calculateBtn" type="button">Berechnung aktualisieren</button>
+            <button id="swapBtn" type="button" class="ghost">
+              Kanone ↔ Ziel tauschen
+            </button>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>2) Ergebnis</h2>
+          <div class="result-grid">
+            <div><span>Entfernung</span><strong id="distanceM">—</strong></div>
+            <div><span>Entfernung</span><strong id="distanceKm">—</strong></div>
+            <div><span>Azimut</span><strong id="azimuth">—</strong></div>
+            <div><span>dx</span><strong id="deltaX">—</strong></div>
+            <div><span>dy</span><strong id="deltaY">—</strong></div>
+            <div><span>Elevation</span><strong id="elevation">—</strong></div>
+          </div>
+          <p id="rangeMessage" class="note">Setze Werte ein, dann wird gerechnet.</p>
+        </section>
+
+        <section class="card card--wide">
+          <h2>3) Hinweise</h2>
+          <ul>
+            <li>
+              Distanz wird im Video als Grundlage für die Lösung genommen: zuerst
+              Geometrie (dx/dy/Distanz/Azimut), danach
+              <strong>Mil-Wert aus Ballistik-Tabelle</strong>.
+            </li>
+            <li>
+              Der Rechner nutzt dieselben Community-Tabellenwerte für
+              L81-Mörser und SPH-2, inkl. Low/High-Bahnen (SPH-2).
+            </li>
+            <li>
+              Teste die Empfehlung im Spiel mindestens mit einem Korrektur-Schuss.
+            </li>
+            <li>
+              Für reine GitHub-Pages-Nutzung: <code>index.html</code> + <code>data/weapons.json</code> + <code>style.css</code> + <code>calculator.js</code> + Action.
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="./calculator.js" defer></script>
+  </body>
+</html>
