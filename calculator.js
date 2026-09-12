@@ -280,6 +280,12 @@ function calculate() {
     elevationText = `${formatSolution(solutions.low)} Mil (low)`;
   } else if (solutions.high) {
     elevationText = `${formatSolution(solutions.high)} Mil (high)`;
+  } else {
+    setResult(
+      `Keine passende Ballistik-Lösung in den Tabellen für ${distanceKm.toFixed(2)} km gefunden.`
+    );
+    elevationEl.textContent = elevationText;
+    return;
   }
 
   elevationEl.textContent = elevationText;
