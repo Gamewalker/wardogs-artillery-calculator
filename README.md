@@ -2,6 +2,10 @@
 
 Ein statischer GitHub-Pages Rechner für Distanz und Azimut aus zwei Spielkoordinaten.
 
+## Live-Demo
+
+- GitHub Pages: [https://gamewalker.github.io/wardogs-artillery-calculator/](https://gamewalker.github.io/wardogs-artillery-calculator/)
+
 ## Features
 
 - Eingabe von Geschütz- und Zielkoordinaten
