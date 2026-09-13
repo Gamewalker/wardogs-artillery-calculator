@@ -743,7 +743,7 @@ function calculate() {
   const dx = targetXcm - gunXcm;
   const dy = targetYcm - gunYcm;
   const distanceM = Math.hypot(dx, dy);
-  const distanceMExact = Math.round(distanceM / 100);
+  const distanceMExact = Math.round(distanceM);
 
   distanceKmEl.textContent = `${distanceMExact} ${t('units.meters')}`;
   setResult(
