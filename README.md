@@ -1,6 +1,6 @@
 # Wardogs Artillerie Distanz-Rechner
 
-Ein statischer GitHub-Pages Rechner für Distanz und Azimut aus zwei Spielkoordinaten.
+Ein statischer GitHub-Pages Rechner für die Distanz zwischen zwei Spielkoordinaten.
 
 ## Live-Demo
 
@@ -10,13 +10,14 @@ Ein statischer GitHub-Pages Rechner für Distanz und Azimut aus zwei Spielkoordi
 
 - Eingabe von Geschütz- und Zielkoordinaten
 - Sprachumschaltung (`en`, `de`), Standard ist Englisch.
-- Distanz- + Azimut-Berechnung im Spiel-Format (`atan2(dx, dy)`)
+- Euklidische Distanz-Berechnung direkt aus den Koordinaten im Spiel-Format.
 - Schnellster Workflow: 2 Punkte einfügen (eigene Position + Gegnerposition) und sofort Ergebnis.
 - Schnelles Einfügen per **Zwischenablage** mit den Buttons:
   - `eigene Position einfügen`
   - `Gegnerposition einfügen`
   - Unterstützte Formate: `x98.43, y110.38` oder `x: 98.43, y: 110.38`
 - Eingaben werden bei jeder Änderung automatisch berechnet (kein extra „Berechnen“-Button).
+- Ergebnis wird in **Metern** berechnet und auf den nächsten Meter gerundet.
 - Zusätzlicher Reset: `Alle Felder leeren`.
 - Referenzquelle:  
   https://youtu.be/9X8U-eHCMgI?is=m-4F3UgNOu2_LIki
@@ -63,7 +64,7 @@ GitHub Pages aktivieren:
 
 ## Hinweis
 
-Diese Seite nutzt reine Tabellenwerte und ersetzt nicht die Simulation im Spiel.
+Diese Seite berechnet ausschließlich die Distanz; sie ersetzt nicht die komplette Simulation im Spiel.
 Starte mit einem Korrekturschuss und passe die Werte im Spielverlauf an.
 
 ## License
